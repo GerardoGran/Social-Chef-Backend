@@ -1,10 +1,8 @@
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes');
 
 var app = express();
 
@@ -12,7 +10,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
@@ -31,4 +28,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// set port, listen for requests
+app.listen(3000, () => {
+  console.log("Server is running on port 3000.");
+});
