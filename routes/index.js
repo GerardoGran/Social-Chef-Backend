@@ -1,9 +1,10 @@
 const express = require('express')
-
-const { postUser } = require('../controllers/userController')
+const { postCook } = require('../controllers/cookController')
 
 const router = express.Router()
 
-router.post('/users', postUser)
+router.post('/cooks', (req, res) => {
+  postCook;
+});
 
 module.exports = router
