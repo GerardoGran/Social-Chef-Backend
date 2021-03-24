@@ -1,6 +1,6 @@
 export default {
     HOST: "localhost",
-    USER: "root",
-    PASSWORD: "123456",
-    DB: "testdb"
+    USER: "admin",
+    PASSWORD: "admin",
+    DB: "social-chef-testdb"
 }
