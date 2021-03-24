@@ -1,9 +1,10 @@
-import { Router } from 'express'
+const express = require('express')
+const { postCook } = require('../controllers/cookController')
 
-import { postCook } from '../controllers/cookController'
+const router = express.Router()
 
-const router = Router()
+router.post('/cooks', (req, res) => {
+  postCook;
+});
 
-router.post('/cooks', postCook)
-
-export default cookRouter
+module.exports = router

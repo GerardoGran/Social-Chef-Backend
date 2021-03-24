@@ -1,6 +1,6 @@
-export default {
+module.exports = {
     HOST: "localhost",
-    USER: "admin",
+    USER: "root",
     PASSWORD: "admin",
-    DB: "social-chef-testdb"
+    DB: "social_chef_testdb"
 }

@@ -1,6 +1,4 @@
-import cookService from '../services/cookService'
-
-const { createCook } = cookService
+const { createCook } = require('../services/cookService')
 
 const postCook = async (req, res, next) => {
     const { name, lastName, username, email, password } = req.body
@@ -9,10 +7,10 @@ const postCook = async (req, res, next) => {
 
         res.sendStatus(201)
         next()
-    } catch (err) {
-        console.log(err.message)
+    } catch (e) {
+        console.log(e.message)
         res.sendStatus(500) && next(error)
     }
 }
 
-export default { postCook: postCook }
+module.exports = postCook

@@ -1,4 +1,4 @@
-import { pool as sql } from './db.js'
+const sql = require('./db')
 
 const Cook = (name, lastName, username, email, password) => {
     this.name = name;
@@ -22,4 +22,4 @@ const insertCook = (name, lastName, username, email, password) => {
     });
 }
 
-export default Cook;
+module.exports = insertCook;

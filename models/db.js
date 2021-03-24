@@ -1,8 +1,9 @@
-import { createPool } from "mysql";
-import dbConfig from "../config/db.config";
+const sql = require("mysql")
+const dbConfig = require("../config/db.config");
+const { connect } = require("../routes");
 
 // Create connection to the db
-var pool = createPool({
+var connection = sql.createConnection({
 	host: dbConfig.HOST,
 	user: dbConfig.USER,
 	password: dbConfig.PASSWORD,
@@ -10,12 +11,9 @@ var pool = createPool({
 });
 
 // Open MySQL connection
-pool.getConnection((err, connection) => {
-	if (err) {
-		connection.release();
-		throw err;
-	}
+connection.connect(error => {
+	if (error) throw error;
 	console.log("Succesfully connected to the database")
 })
 
-export default pool
+module.exports = connection;

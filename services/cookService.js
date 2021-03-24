@@ -1,4 +1,4 @@
-import { insertCook } from '../models/cookDb';
+const { insertCook } = require('../models/cookDb')
 
 const createCook = async (name, lastName, username, email, password) => {
     try {
@@ -8,4 +8,4 @@ const createCook = async (name, lastName, username, email, password) => {
     }
 }
 
-export default createCook
+module.exports = createCook
