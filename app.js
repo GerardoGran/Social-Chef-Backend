@@ -1,16 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var logger = require('morgan');
+import createError from 'http-errors';
+import express, { json, urlencoded } from 'express';
+import logger from 'morgan';
 
-var usersRouter = require('./routes');
+import cookRouter from './routes';
 
 var app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
-app.use('/users', usersRouter);
+app.use('/cooks', cookRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

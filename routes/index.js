@@ -1,9 +1,9 @@
-const express = require('express')
+import { Router } from 'express'
 
-const { postUser } = require('../controllers/userController')
+import { postCook } from '../controllers/cookController'
 
-const router = express.Router()
+const router = Router()
 
-router.post('/users', postUser)
+router.post('/cooks', postCook)
 
-module.exports = router
+export default cookRouter
