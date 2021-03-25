@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post('/cooks', (req, res) => {
   console.log('Route')
-  postCook(req, res, null);
+  await postCook(req, res, null);
   console.log('Exit Route')
 });
 
