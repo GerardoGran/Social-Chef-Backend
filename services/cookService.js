@@ -1,6 +1,7 @@
 const { insertCook } = require('../models/cookDb')
 
 const createCook = async (name, lastName, username, email, password) => {
+    console.log("Service")
     try {
         return await insertCook(name, lastName, username, email, password)
     } catch (err) {
@@ -8,4 +9,4 @@ const createCook = async (name, lastName, username, email, password) => {
     }
 }
 
-module.exports = createCook
+module.exports = { createCook }
