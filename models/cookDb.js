@@ -7,7 +7,7 @@ const insertCook = async (fname, lname, username, email, password) => {
 
     sql.getConnection((err, connection) => {
         if (err) console.error(err);
-        console.log('MySQL Connection establiched: ', connection.threadId);
+        console.log('MySQL Connection established: ', connection.threadId);
         connection.query("INSERT INTO COOKS SET ?", newCook, (err, results) => {
             if (err) {
                 console.log("error: ", err);
