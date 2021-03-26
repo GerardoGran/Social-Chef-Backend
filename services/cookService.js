@@ -1,9 +1,9 @@
 const { insertCook } = require('../models/cookDb')
 
-const createCook = async (name, lastName, username, email, password) => {
+const createCook = async (fname, lname, username, email, password) => {
     console.log("Service")
     try {
-        return await insertCook(name, lastName, username, email, password)
+        return await insertCook(fname, lname, username, email, password)
     } catch (err) {
         throw new Error(err.mesage)
     }
