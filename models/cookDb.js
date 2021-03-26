@@ -2,7 +2,7 @@ const sql = require('./db')
 
 const insertCook = async (fname, lname, username, email, password) => {
     console.log("DB")
-    const newCook = { name, lname, username, email, password }
+    const newCook = { fname, lname, username, email, password }
     sql.query("INSERT INTO COOKS SET ?", newCook, (err, res) => {
         if (err) {
             console.log("error: ", err);
