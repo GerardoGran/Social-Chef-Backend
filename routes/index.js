@@ -3,10 +3,9 @@ const { postCook } = require('../controllers/cookController')
 
 const router = express.Router()
 
+// Create Account route
 router.post('/cooks', (req, res) => {
-  console.log('Route')
   postCook(req, res, null);
-  console.log('Exit Route')
 });
 
 // Test API connection

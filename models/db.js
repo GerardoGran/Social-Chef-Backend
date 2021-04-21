@@ -1,4 +1,4 @@
-const sql = require("mysql")
+const sql = require("mysql2")
 const dbConfig = require("../config/db.config");
 
 // Create connection to the db
