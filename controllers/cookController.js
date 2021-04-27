@@ -1,12 +1,13 @@
 const { createCook } = require('../services/cookService')
 
+// Parse account info and call Service
 const postCook = async (req, res, next) => {
-    console.log('Controller')
     const { fname, lname, username, email, password } = req.body
     try {
-        await createCook(fname, lname, username, email, password);
-
-        res.sendStatus(201);
+        // Call async function
+        await createCook(fname, lname, username, email, password, (status, msg) => {
+            res.status(status).send(msg)
+        });
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500)

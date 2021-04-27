@@ -3,9 +3,9 @@ const router = require('./routes/index');
 
 var app = express();
 
+// use body parsers and routes declared in index.js
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 app.use(router)
 
 // catch 404 and forward to error handler
