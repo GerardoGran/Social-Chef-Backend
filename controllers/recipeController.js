@@ -1,4 +1,4 @@
-const { createRecipe } = require('../services/recipeService')
+const { createRecipe, getRecipeList } = require('../services/recipeService')
 
 // Parse account info and call Service
 const postRecipe = async (req, res, next) => {
@@ -27,4 +27,15 @@ const postRecipe = async (req, res, next) => {
   }
 }
 
-module.exports = { postRecipe }
+const getRecipes = async (req, res) => {
+  try {
+    await getRecipeList((results) => {      
+      res.json(results)
+    });
+  } catch(err) {
+    console.log(err.message)
+    res.sendStatus(500)
+  }
+}
+
+module.exports = { postRecipe, getRecipes }
