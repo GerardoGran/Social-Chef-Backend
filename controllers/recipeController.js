@@ -1,4 +1,4 @@
-const { createRecipe, getRecipeList } = require('../services/recipeService')
+const { createRecipe, getRecipeList, selectRandomRecipe } = require('../services/recipeService')
 
 // Parse account info and call Service
 const postRecipe = async (req, res, next) => {
@@ -27,15 +27,40 @@ const postRecipe = async (req, res, next) => {
   }
 }
 
-const getRecipes = async (req, res) => {
+const getRandomRecipe = async (req, res) => {
   try {
-    await getRecipeList((results) => {      
-      res.json(results)
+    await selectRandomRecipe((recipe) => {
+      prepTime = { time: recipe.prepTime.split(" ")[0], unit: recipe.prepTime.split(" ")[1] };
+      cookTime = { time: recipe.cookTime.split(" ")[0], unit: recipe.cookTime.split(" ")[1] };
+
+      const ingredients = [];
+      recipe.ingredients.split("\n").map(ingredient => ingredients.push({ quantity: ingredient.split(",")[0], unit: ingredient.split(",")[1], name: ingredient.split(",")[2] }));
+
+      serializedRecipe = {
+        title: recipe.title,
+        description: recipe.description,
+        prepTime: prepTime,
+        cookTime: cookTime,
+        ingredients: ingredients,
+        instructions: recipe.instructions.split("\n")
+      }
+      res.json(serializedRecipe);
     });
-  } catch(err) {
+  } catch {
     console.log(err.message)
     res.sendStatus(500)
   }
 }
 
-module.exports = { postRecipe, getRecipes }
+const getRecipes = async (req, res) => {
+  try {
+    await getRecipeList((results) => {
+      res.json(results)
+    });
+  } catch (err) {
+    console.log(err.message)
+    res.sendStatus(500)
+  }
+}
+
+module.exports = { postRecipe, getRecipes, getRandomRecipe }

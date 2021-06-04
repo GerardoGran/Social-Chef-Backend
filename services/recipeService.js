@@ -18,9 +18,9 @@ const createRecipe = async (title, description, prepTime, cookTime,
 }
 
 
-const getRecipeList = async(callback) => {
+const getRecipeList = async (callback) => {
   await getRecipes((results) => {
-    if (results.length != 0) {      
+    if (results.length != 0) {
       return callback(results);
     } else {
       return callback(409, `No recipes found`);
@@ -28,5 +28,16 @@ const getRecipeList = async(callback) => {
   })
 }
 
+const selectRandomRecipe = async (callback) => {
+  await getRecipes((results) => {
+    if (results.length != 0) {
+      const randomRecipe = results[Math.floor(Math.random() * results.length)];
+      return callback(randomRecipe);
+    } else {
+      return callback(409, `No recipes found`);
+    }
+  })
+}
 
-module.exports = { createRecipe, getRecipeList }
+
+module.exports = { createRecipe, getRecipeList, selectRandomRecipe }
